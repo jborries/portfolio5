@@ -4,14 +4,51 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <meta name="theme-color" content="#2196F3">
-    <title>Material UI One Page Theme</title>
+    <title>Howdy Y'all!</title>
 
     <!-- CSS  -->
     <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
     <link href="min/custom-min.css" type="text/css" rel="stylesheet" >
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!--JQuery-->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+       <script src="js/jquery.js"></script>
+
+       <!-- Bootstrap Core JavaScript -->
+       <script src="js/bootstrap.js"></script>
+       <script src="js/bootstrap.min.js"></script>
+       <script src="min/plugin-min.js"></script>
+       <script src="min/custom-min.js"></script>
+
+
+       <script>
+
+              $(window).on("load",function() {
+                function fade(pageLoad) {
+                  var windowTop=$(window).scrollTop(), windowBottom=windowTop+$(window).innerHeight();
+                  var min=0.3, max=1.0, threshold=0.02;
+
+                  $(".fade").each(function() {
+                    /* Check the location of each desired element */
+                    var objectHeight=$(this).outerHeight(), objectTop=$(this).offset().top, objectBottom=$(this).offset().top+objectHeight;
+
+                    /* Fade element in/out based on its visible percentage */
+                    if (objectTop < windowTop) {
+                      if (objectBottom > windowTop) {$(this).fadeTo(0,min+((max-min)*((objectBottom-windowTop)/objectHeight)));}
+                      else if ($(this).css("opacity")>=min+threshold || pageLoad) {$(this).fadeTo(0,min);}
+                    } else if (objectBottom > windowBottom) {
+                      if (objectTop < windowBottom) {$(this).fadeTo(0,min+((max-min)*((windowBottom-objectTop)/objectHeight)));}
+                      else if ($(this).css("opacity")>=min+threshold || pageLoad) {$(this).fadeTo(0,min);}
+                    } else if ($(this).css("opacity")<=max-threshold || pageLoad) {$(this).fadeTo(0,max);}
+                  });
+                } fade(true); //fade elements on page-load
+                $(window).scroll(function(){fade(false);}); //fade elements on scroll
+              });
+
+          </script>
 
 
 
@@ -34,19 +71,20 @@
             <div class="nav-wrapper">
             <a href="#" id="logo-container" class="brand-logo">Jesse <span style="color:#424243;">Borries</span></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#intro">Philosophy</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#team">About</a></li>
+                    <li><a href="#intro">About</a></li>
+                    <li><a href="#work">Web Dev</a></li>
+                    <li><a href="#team">Social Media</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="https://github.com/jborries" target="_blank">Github</a></li>
                     <li><a href="https://linkedin.com/in/jesse-borries" target="_blank">LinkedIn</a>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
-                    <li><a href="#intro">Service</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#team">Team</a></li>
+                    <li><a href="#intro">About</a></li>
+                    <li><a href="#work">Web Dev</a></li>
+                    <li><a href="#team">Social Media</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="" target="_blank">Download</a></li>
+                    <li><a href="https://github.com/jborries" target="_blank">Github</a></li>
+                    <li><a href="https://linkedin.com/in/jesse-borries" target="_blank">LinkedIn</a>
                 </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
@@ -65,6 +103,7 @@
                 <b>MENTOR</b>
                 <b>LEADER</b>
                 <b>CREATOR</b>
+                <b>BAD ASS</b>
             </span>
         </h1>
     </div>
@@ -72,27 +111,29 @@
 
 <!--Intro and service-->
 <div id="intro" class="section scrollspy">
-    <div class="container">
-        <div class="row">
-            <div  class="col s12">
-                <h2 class="center header text_h2"> Welcome.<br>Proud Fort Worth native and neighborhood friendly networker trying to use his powers for good.<br> Trends come and go<br>Good design remains a constant</h2>
+    <div class="container ">
+        <div class="row ">
+            <div  class="col s12 ">
+                <h2 class="center header text_h2 fade" > Howdy, from Fort Worth, TX. Yeeeehaw.<br>Freelance Web, Marketing Content, and Social Media Developer.<br>Trends come and go. <span style="color:#00c0F3;"> Good design remains a constant.</span></h2>
             </div>
 
-            <div  class="col s12 m4 l4">
+            <div  class="col s12 m4 l4 fade">
                 <div class="center promo promo-example">
                     <i class="mdi-hardware-phone-iphone"></i>
-                    <h5 class="promo-caption">Mobile First</h5>
-                    <p class="light center">Over 60% of all initial views of a website are on mobile now. If you're site is not mobile ready, then you're losing views and business. Mobile phones have taken over. I for one welcome our new overlords.</p>
+                    <h5 class="promo-caption fade">Mobile First</h5>
+                    <p class="light center fade">Over 60% of all initial views of a website are on mobile now. If you're site is not mobile ready, then you're losing views and business. Mobile phones have taken over. I for one welcome our new overlords.</p>
                 </div>
             </div>
-            <div class="col s12 m4 l4">
+
+            <div class="col s12 m4 l4 fade">
                 <div class="center promo promo-example">
                     <i class="mdi-action-dashboard "></i>
                     <h5 class="promo-caption">Minimalist Design</h5>
-                    <p class="light center">Gone our the days of shotgun advertising where you list and show everything all at once and hope for a hit. Clean sites that rely on intuitive cues, sliders, and keywords are the hallmark of a modern website.</p>
+                    <p class="light center">Gone are the days of cluttered shotgun advertising that lists everything all at once, hoping for a hit. Clean sites that utilize intuitive cues, sliders, and bold keywords are the hallmarks of a modern website.</p>
                 </div>
             </div>
-            <div class="col s12 m4 l4">
+
+            <div class="col s12 m4 l4 fade">
                 <div class="center promo promo-example">
                     <i class="mdi-hardware-desktop-windows"></i>
                     <h5 class="promo-caption">Responsive</h5>
@@ -105,11 +146,11 @@
 
 <!--Work-->
 <div class="section scrollspy" id="work">
-    <div class="container">
-        <h2 class="header text_b">Work </h2>
+    <div class="container ">
+        <h2 class="header text_b fade">Web Development </h2>
         <div class="row">
-            <div class="col s12 m4 l4">
-                <div class="card">
+            <div class="col s12 m4 l4 fade">
+                <div class="card" id="div1">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="img/shirts1.jpg">
                     </div>
@@ -118,25 +159,24 @@
                         <p><a href="https://s3-us-west-2.amazonaws.com/skip.com/index.html" target="_blank">Project Link</a></p>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Skip to my Lou Designs <i class="mdi-navigation-close right"></i></span>
+                        <span class="card-title grey-text text-darken-4 fade">Skip to my Lou Designs <i class="mdi-navigation-close right"></i></span>
                         <p>An e-commerce site that focuses on personalized shirts, gifts, and more. Designed layout and media. Developed all marketing content. Utilizes HTML5, CSS3, PHP contact form, bootstrap. Site is under construction.</p>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4 l4">
+            <div class="col s12 m4 l4 fade">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
 
-                    <!--Start FW Murder Mystery Slider -->
+                        <img src="img/2.jpg">
+
+                    <!--Start FW Murder Mystery Slider
 
                       <div id="Carousel" class="carousel slide">
-                          <!-- Wrapper for Slides -->
+                          <!-- Wrapper for Slides
                           <div class="carousel-inner">
                               <div class="item active">
                                   <div class="fill"><img class="img-responsive" src="img/1.jpg" alt="" style="border-radius:2px;"></div>
-                              </div>
-                              <div class="item">
-                                  <div class="fill"><img class="img-responsive" src="img/2.jpg" alt="" style="border-radius:2px;"></div>
                               </div>
                               <div class="item">
                                   <div class="fill"><img class="img-responsive" src="img/3.jpg" alt="" style="border-radius:2px;"></div>
@@ -170,9 +210,6 @@
                               </div>
                               <div class="item">
                                   <div class="fill"><img class="img-responsive" src="img/13.jpg" alt="" style="border-radius:2px;"></div>
-                              </div>
-                              <div class="item">
-                                  <div class="fill"><img class="img-responsive" src="img/14.jpg" alt="" style="border-radius:2px;"></div>
                               </div>
                               <div class="item">
                                   <div class="fill"><img class="img-responsive" src="img/15.jpg" alt="" style="border-radius:2px;"></div>
@@ -232,23 +269,24 @@
                     <!--End FW Murder Mystery Slider -->
 
                     </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">FW Murder Mystery <i class="mdi-navigation-more-vert right"></i></span>
+                    <div class="card-content fade">
+                        <span class="card-title activator grey-text text-darken-4 ">FW Murder Mystery <i class="mdi-navigation-more-vert right"></i></span>
                         <p><a href="http://www.fwmurdermystery.com" target="_blank">Project link</a></p>
                     </div>
-                    <div class="card-reveal">
+                    <div class="card-reveal ">
                         <span class="card-title grey-text text-darken-4">Fort Worth Murder Mystery <i class="mdi-navigation-close right"></i></span>
-                        <p>A single page mobile first charity event website built in partnership with the Amon G. Carter Museum. Custom shopping cart and thematic elements tie the event and site together. Utilizes HTML5, CSS3, Bootstrap.</p>
+                        <p>A single page mobile first charity event website built in partnership with the Amon G. Carter Museum. Custom shopping cart and thematic elements tie the event and site together. Created all marketing and social media content. Utilizes HTML5, CSS3, Bootstrap.</p>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4 l4">
+            <div class="col s12 m4 l4 fade">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
-                    <!--<img class="activator" src="img/project3.png">-->
+                    <img class="activator" src="img/prom1.jpg">
 
+                    <!--
                     <div id="myCarousel" class="carousel slide">
-                        <!-- Wrapper for Slides -->
+                        <!-- Wrapper for Slides
                         <div class="carousel-inner" style="border: 3px solid white;">
                             <div class="item active">
                                 <div class="fill"><img class="img-responsive" src="img/prom1.jpg" alt="" style="border-radius:2px;"></div>
@@ -277,7 +315,7 @@
                             <div class="item">
                                 <div class="fill"><img class="img-responsive" src="img/prom11.jpg" alt="" style="border-radius:2px;"></div>
                             </div>
-                            <!--slider control buttons-->
+                            <!--slider control buttons
                             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                                 <span class="icon-prev"></span>
                             </a>
@@ -285,62 +323,62 @@
                                 <span class="icon-next"></span>
                             </a>
                         </div>
-                    </div>
+                    </div>-->
 
 
                     </div>
-                    <div class="card-content">
+                    <div class="card-content fade">
                         <span class="card-title activator grey-text text-darken-4">FW Tacky Prom <i class="mdi-navigation-more-vert right"></i></span>
                         <p><a href="https://www.fortworthtackyprom.com" target="_blank">Project link</a></p>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">FW <i class="mdi-navigation-close right"></i></span>
-                        <p>Annual Charity event multi-page website with a focus on pictures for inspiration. PHP based sign up form for updates is included.</p>
+                        <span class="card-title grey-text text-darken-4 ">FW Tacky Prom<i class="mdi-navigation-close right"></i></span>
+                        <p>Annual Charity event multi-page website with a focus on pictures for inspiration. Created all marketing and social media content. PHP based sign up form for updates is included.</p>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4 l4">
+            <div class="col s12 m4 l4 fade">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project4.jpg">
+                        <img class="activator" src="img/photography1.jpg">
                     </div>
-                    <div class="card-content">
+                    <div class="card-content fade">
                         <span class="card-title activator grey-text text-darken-4">AlyRenee Photography<i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
+                        <p><a href="http://54.201.172.29/gallery">Project link</a></p>
                     </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">AlyRenee Photography <i class="mdi-navigation-close right"></i></span>
-                        <p>Photography website based on Materialize CSS. Under Construction.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project5.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Appointment Scheduler <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Appointment Scheduler <i class="mdi-navigation-close right"></i></span>
-                        <p>A simple scheduler application with custom validations built primarily for Doctors offices. Front end and validations can be tailored to fit any business. Built using MEAN Stack.</p>
+                    <div class="card-reveal fade">
+                        <span class="card-title grey-text text-darken-4 ">AlyRenee Photography <i class="mdi-navigation-close right"></i></span>
+                        <p>Photography website constructed with Materialize CSS. Developed marketing content for client. Currently under construction.</p>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4 l4">
+            <div class="col s12 m4 l4 fade">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/project6.jpeg">
+                        <img class="activator" src="img/cat-calendar.jpg">
                     </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Gift List <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="#">Project link</a></p>
+                    <div class="card-content fade">
+                        <span class="card-title activator grey-text text-darken-4 ">Scheduler Application<i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="http://54.214.226.150/#!/">Project link</a></p>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Gift List <i class="mdi-navigation-close right"></i></span>
-                        <p>A multi-purpose item, gift, product tracker for integrated user groups. Built using MEAN Stack.</p>
+                        <span class="card-title grey-text text-darken-4 ">Appointment Scheduler <i class="mdi-navigation-close right"></i></span>
+                        <p>A simple unstyled scheduler application with custom validations built primarily for Doctors offices. Front end and validations can be tailored to fit any business. Built using MEAN Stack (Angular1.js).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4 l4 fade">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="img/present.jpg">
+                    </div>
+                    <div class="card-content fade">
+                        <span class="card-title activator grey-text text-darken-4 fade">Gift List Application <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="http://54.202.80.144/#/">Project link</a></p>
+                    </div>
+                    <div class="card-reveal fade">
+                        <span class="card-title grey-text text-darken-4 fade">Gift List <i class="mdi-navigation-close right"></i></span>
+                        <p>A multi-purpose item, gift, product tracker for integrated user groups. Built using MEAN Stack (Angular1.js).</p>
                     </div>
                 </div>
             </div>
@@ -349,126 +387,235 @@
 </div>
 
 <!--Parallax-->
-<div class="parallax-container">
-    <div class="parallax"><img src="img/parallax1.jpg"></div>
+<div class="parallax-container fade">
+    <div class="hide-on-med-and-up	">
+        <div class="parallax"><img src="img/kidswhocode6.jpg" style="max-height: 100%;"></div>
+    </div>
+    <div class="hide-on-small-only">
+        <div class="parallax"><img src="img/kidswhocode5.jpg" style="max-width: 100%;"></div>
+    </div>
 </div>
 
 <!--Team-->
 <div class="section scrollspy" id="team">
     <div class="container">
-        <h2 class="header text_b"> Our Team </h2>
+        <h2 class="header text_b fade"> Social Media Marketing </h2>
         <div class="row">
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="img/profile-pic1.jpg">
+
+            <div class="col s12 m3 fade">
+
+                    <div class="waves-effect waves-block waves-light fade">
+                        <img class="activator" src="img/bbbs9.jpg" style="max-width: 100%; max-height:100%;">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Flash <br/>
-                            <small><em><a class="red-text text-darken-1" href="#">CEO</a></em></small></span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href=#>
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="img/profile-pic2.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Cat Woman<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">Designer</a></em></small>
+                        <span class="card-title activator grey-text text-darken-4 fade"><br/>
+                            <small><em><a class="red-text text-darken-1 fade" href="#">Big Brothers Big Sisters Social Event Invite</a></em></small>
                         </span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </p>
                     </div>
-                </div>
+
             </div>
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="img/avatar3.png">
+
+            <div class="col s12 m3 fade">
+                        <div class="waves-effect waves-block waves-light fade">
+                        <img class="activator" src="img/bbbs7.jpg" style="max-width:100%; max-height:100%;">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">
-                            Capt. America <br/>
-                            <small><em><a class="red-text text-darken-1" href="#">CMO</a></em></small></span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </p>
+                        <span class="card-title activator grey-text text-darken-4 fade"><br/>
+                            <small><em><a class="red-text text-darken-1" href="http://www.bbbstx.org">Big Brothers Big Sisters Recruitment Campaign</a></em></small>
+                        </span>
+
                     </div>
-                </div>
+
             </div>
-            <div class="col s12 m3">
-                <div class="card card-avatar">
-                    <div class="waves-effect waves-block waves-light">
-                        <img class="activator" src="img/avatar4.png">
+            <div class="col s12 m3 fade">
+
+                    <div class="waves-effect waves-block waves-light fade">
+                       <!-- <img class="activator" src="img/PromInvite.jpg" style="max-width:100%; max-height:100%;">
+
+                        <!--Start FW Murder Mystery Slider -->
+
+                          <div id="Carousel" class="carousel slide">
+                              <!-- Wrapper for Slides -->
+                              <div class="carousel-inner">
+                                  <div class="item active">
+                                      <div class="fill"><img class="img-responsive" src="img/1.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/3.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/4.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/5.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/6.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/7.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/8.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/9.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/10.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/11.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/12.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/13.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/15.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/16.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/17.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/18.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/19.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/20.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/21.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/22.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/23.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/24.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/25.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/26.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/27.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/28.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+                                  <div class="item">
+                                      <div class="fill"><img class="img-responsive" src="img/29.jpg" alt="" style="border-radius:2px;"></div>
+                                  </div>
+
+                                  <a class="left carousel-control" href="#Carousel" data-slide="prev">
+                                      <span class="icon-prev"></span>
+                                  </a>
+                                  <a class="right carousel-control" href="#Carousel" data-slide="next">
+                                      <span class="icon-next"></span>
+                                  </a>
+                              </div>
+                          </div>
+
+                        <!--End FW Murder Mystery Slider -->
+
+
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Robin<br/>
-                            <small><em><a class="red-text text-darken-1" href="#">Developer</a></em></small></span>
-                        <p>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-facebook-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="#">
-                                <i class="fa fa-linkedin-square"></i>
-                            </a>
-                        </p>
+                        <span class="card-title activator grey-text text-darken-4 fade"><br>
+                            <small><em><a class="red-text text-darken-1" href="https://www.fwmurdermystery.com">Fort Worth Murder Mystery at the Museu </a></em></small></span>
                     </div>
-                </div>
             </div>
+            <div class="col s12 m3 fade">
+
+                    <div class="waves-effect waves-block waves-light fade">
+                        <!--<img class="activator" src="img/2.jpg" style="max-width:100%; max-height:100%;">-->
+
+                        <div id="myCarousel" class="carousel slide">
+                            <!-- Wrapper for Slides -->
+                            <div class="carousel-inner" style="border: 3px solid white;">
+                                <div class="item active">
+                                    <div class="fill"><img class="img-responsive" src="img/prom1.jpg" alt="" style="border-radius:2px;"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill"><img class="img-responsive" src="img/prom3.jpg" alt="" style="border-radius:2px;"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill"><img class="img-responsive" src="img/prom4.jpg" alt="" style="border-radius:2px;"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill"><img class="img-responsive" src="img/prom6.jpg" alt="" style="border-radius:2px;"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill"><img class="img-responsive" src="img/prom7.jpg" alt="" style="border-radius:2px;"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill"><img class="img-responsive" src="img/prom8.jpg" alt="" style="border-radius:2px;"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill"><img class="img-responsive" src="img/prom9.jpg" alt="" style="border-radius:2px;"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill"><img class="img-responsive" src="img/prom10.jpg" alt="" style="border-radius:2px;"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill"><img class="img-responsive" src="img/prom11.jpg" alt="" style="border-radius:2px;"></div>
+                                </div>
+                                <!--slider control buttons-->
+                                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                    <span class="icon-prev"></span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                    <span class="icon-next"></span>
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4 fade"><br/>
+                            <small><em><a class="red-text text-darken-1" href="https://www.fortworthtackyprom.com">Fort Worth Tacky Prom </a></em></small></span>
+                    </div>
+
+            </div>
+        </div>
+
+  <!--  <div class="row">
+        <div class="col s12 m3 fade">
+                    <div class="waves-effect waves-block waves-light fade">
+                    <img class="activator" src="img/bbbs7.jpg" style="max-width:100%; max-height:100%;">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4 fade"><br/>
+                        <small><em><a class="red-text text-darken-1" href="http://www.bbbstx.org">Big Brothers Big Sisters Recruitment Campaign</a></em></small>
+                    </span>
+                </div> 
+        </div> -->
+
+
         </div>
     </div>
 </div>
 
+
 <!--Footer-->
-<footer id="contact" class="page-footer default_color scrollspy">
-    <div class="container">
+<footer id="contact" class="page-footer default_color scrollspy fade">
+    <div class="container fade">
         <div class="row">
             <div class="col l6 s12">
+                <!--PHP Contact Form-->
                 <form class="col s12" action="contact.php" method="post">
                     <div class="row">
                         <div class="input-field col s6">
@@ -493,24 +640,19 @@
                         </div>
                     </div>
                 </form>
+                <!--End PHP Contact Form-->s
             </div>
             <div class="col l3 s12">
-                <h5 class="white-text">jesseborries.com</h5>
+                <h5 class="white-text"> Y'all come back now, ya hear!</h5>
                 <ul>
-                    <li><a class="white-text" href="#">Home</a></li>
-                    <li><a class="white-text" href="#">Blog</a></li>
+                    <li><a class="white-text" href=""></a></li>
                 </ul>
             </div>
             <div class="col l3 s12">
                 <h5 class="white-text">Social</h5>
                 <ul>
-                    <li>
-                        <a class="white-text" href="#">
-                            <i class="small fa fa-behance-square white-text"></i> Behance
-                        </a>
-                    </li>
-                    <li>
-                        <a class="white-text" href="#">
+                                      <li>
+                        <a class="white-text" href="https://www.facebook.com/public/jesse-borries">
                             <i class="small fa fa-facebook-square white-text"></i> Facebook
                         </a>
                     </li>
@@ -530,27 +672,24 @@
     </div>
     <div class="footer-copyright default_color">
         <div class="container">
-            Made by <a class="white-text" href="#">Jesse Borries</a>. Thanks to <a class="white-text" href="http://materializecss.com/">materializecss</a>
+            Made with love by <a class="white-text" href="">Jesse Borries</a> using <a class="white-text" href="http://materializecss.com/">materializecss</a>
         </div>
     </div>
 </footer>
 
 
     <!--  Scripts-->
-    <script src="min/plugin-min.js"></script>
-    <script src="min/custom-min.js"></script>
-
+    <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!--Activate Slider-->
     <script>
         $('.carousel').carousel({
             interval: 4000 //changes the speed
         })
     </script>
+
 
     </body>
 </html>
