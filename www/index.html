@@ -1,101 +1,117 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#2196F3">
     <title>Howdy Y'all!</title>
 
     <!-- CSS  -->
     <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
-    <link href="min/custom-min.css" type="text/css" rel="stylesheet" >
+    <link href="min/custom-min.css" type="text/css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!--JQuery-->
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-       <script src="js/jquery.js"></script>
+    <script src="js/jquery.js"></script>
 
-       <!-- Bootstrap Core JavaScript -->
-       <script src="js/bootstrap.js"></script>
-       <script src="js/bootstrap.min.js"></script>
-       <script src="min/plugin-min.js"></script>
-       <script src="min/custom-min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="min/plugin-min.js"></script>
+    <script src="min/custom-min.js"></script>
 
 
-       <script>
+    <script>
+        $(window).on("load", function() {
+            function fade(pageLoad) {
+                var windowTop = $(window).scrollTop(),
+                    windowBottom = windowTop + $(window).innerHeight();
+                var min = 0.3,
+                    max = 1.0,
+                    threshold = 0.02;
 
-              $(window).on("load",function() {
-                function fade(pageLoad) {
-                  var windowTop=$(window).scrollTop(), windowBottom=windowTop+$(window).innerHeight();
-                  var min=0.3, max=1.0, threshold=0.02;
-
-                  $(".fade").each(function() {
+                $(".fade").each(function() {
                     /* Check the location of each desired element */
-                    var objectHeight=$(this).outerHeight(), objectTop=$(this).offset().top, objectBottom=$(this).offset().top+objectHeight;
+                    var objectHeight = $(this).outerHeight(),
+                        objectTop = $(this).offset().top,
+                        objectBottom = $(this).offset().top + objectHeight;
 
                     /* Fade element in/out based on its visible percentage */
                     if (objectTop < windowTop) {
-                      if (objectBottom > windowTop) {$(this).fadeTo(0,min+((max-min)*((objectBottom-windowTop)/objectHeight)));}
-                      else if ($(this).css("opacity")>=min+threshold || pageLoad) {$(this).fadeTo(0,min);}
+                        if (objectBottom > windowTop) {
+                            $(this).fadeTo(0, min + ((max - min) * ((objectBottom - windowTop) / objectHeight)));
+                        } else if ($(this).css("opacity") >= min + threshold || pageLoad) {
+                            $(this).fadeTo(0, min);
+                        }
                     } else if (objectBottom > windowBottom) {
-                      if (objectTop < windowBottom) {$(this).fadeTo(0,min+((max-min)*((windowBottom-objectTop)/objectHeight)));}
-                      else if ($(this).css("opacity")>=min+threshold || pageLoad) {$(this).fadeTo(0,min);}
-                    } else if ($(this).css("opacity")<=max-threshold || pageLoad) {$(this).fadeTo(0,max);}
-                  });
-                } fade(true); //fade elements on page-load
-                $(window).scroll(function(){fade(false);}); //fade elements on scroll
-              });
-
-          </script>
+                        if (objectTop < windowBottom) {
+                            $(this).fadeTo(0, min + ((max - min) * ((windowBottom - objectTop) / objectHeight)));
+                        } else if ($(this).css("opacity") >= min + threshold || pageLoad) {
+                            $(this).fadeTo(0, min);
+                        }
+                    } else if ($(this).css("opacity") <= max - threshold || pageLoad) {
+                        $(this).fadeTo(0, max);
+                    }
+                });
+            }
+            fade(true); //fade elements on page-load
+            $(window).scroll(function() {
+                fade(false);
+            }); //fade elements on scroll
+        });
+    </script>
 
 
 
 </head>
+
 <body id="top" class="scrollspy">
 
-<!-- Pre Loader -->
-<div id="loader-wrapper">
-    <div id="loader"></div>
+    <!-- Pre Loader -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
 
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
 
-</div>
+    </div>
 
-<!--Navigation-->
- <div class="navbar-fixed">
-    <nav id="nav_f" class="default_color" role="navigation">
-        <div class="container">
-            <div class="nav-wrapper">
-            <a href="#" id="logo-container" class="brand-logo">Jesse <span style="color:#424243;">Borries</span></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="#intro">About</a></li>
-                    <li><a href="#work">Web Dev</a></li>
-                    <li><a href="#team">Social Media</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://github.com/jborries" target="_blank">Github</a></li>
-                    <li><a href="https://linkedin.com/in/jesse-borries" target="_blank">LinkedIn</a>
-                </ul>
-                <ul id="nav-mobile" class="side-nav">
-                    <li><a href="http://www.jesseborries.com/#about">About</a></li>
-                    <li><a href="http://www.jesseborries.com/#work">Web Dev</a></li>
-                    <li><a href="http://www.jesseborries.com/#team">Social Media</a></li>
-                    <li><a href="http://www.jesseborries.com/#contact">Contact</a></li>
-                    <li><a href="https://github.com/jborries" target="_blank">Github</a></li>
-                    <li><a href="https://linkedin.com/in/jesse-borries" target="_blank">LinkedIn</a>
-                </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    <!--Navigation-->
+    <div class="navbar-fixed">
+        <nav id="nav_f" class="default_color" role="navigation">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#" id="logo-container" class="brand-logo">Jesse <span style="color:#424243;">Borries</span></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="#intro">About</a></li>
+                        <li><a href="#work">Web Dev</a></li>
+                        <li><a href="#team">Marketing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="https://github.com/jborries" target="_blank">Github</a></li>
+                        <li><a href="https://linkedin.com/in/jesse-borries" target="_blank">LinkedIn</a>
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="http://www.jesseborries.com/#about">About</a></li>
+                        <li><a href="http://www.jesseborries.com/#work">Web Dev</a></li>
+                        <li><a href="http://www.jesseborries.com/#team">Social Media</a></li>
+                        <li><a href="http://www.jesseborries.com/#contact">Contact</a></li>
+                        <li><a href="https://github.com/jborries" target="_blank">Github</a></li>
+                        <li><a href="https://linkedin.com/in/jesse-borries" target="_blank">LinkedIn</a>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                </div>
             </div>
-        </div>
-    </nav>
-</div>
+        </nav>
+    </div>
 
-<!--Hero-->
-<div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-        <h1 class="text_h center header cd-headline letters type">
+    <!--Hero-->
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <h1 class="text_h center header cd-headline letters type">
             <span style="color: #424243;">I AM A</span>
             <span class="cd-words-wrapper waiting">
                 <b class="is-visible">DESIGNER</b>
@@ -105,87 +121,115 @@
                 <b>CREATOR</b>
             </span>
         </h1>
+        </div>
     </div>
-</div>
 
-<!--Intro and service-->
-<div id="intro" class="section scrollspy">
-    <div class="container ">
-        <div class="row ">
-            <div  class="col s12 ">
-                <h2 class="center header text_h2 fade" > Howdy, from Fort Worth, TX. Yeeeehaw.<br>Freelance Web, Marketing Content, and Social Media Developer.<br>Trends come and go. <span style="color:#00c0F3;"> Good design remains a constant.</span></h2>
-            </div>
-
-            <div  class="col s12 m4 l4 fade">
-                <div class="center promo promo-example">
-                    <i class="mdi-hardware-phone-iphone"></i>
-                    <h5 class="promo-caption fade">Mobile First</h5>
-                    <p class="light center fade">Over 60% of all initial views of a website are on mobile now. If you're site is not mobile ready, then you're losing views and business. Mobile phones have taken over. I for one welcome our new overlords.</p>
+    <!--Intro and service-->
+    <div id="intro" class="section scrollspy">
+        <div class="container ">
+            <div class="row ">
+                <div class="col s12 ">
+                    <h2 class="center header text_h2" style="color:#00c0f3">Trends come and go...<br>...Good design remains a constant</h2>
+                    <h4 class="center header">As a full-stack developer and graphic designer, I am a one-stop solution for handling your web design, development, and deployment needs. My designs focus on modern, responsive, mobile-first concepts. From multi-million dollar businesses to non-profits operating on a shoestring budget, I have built custom web experiences that converted sales and increased profits. Contact me at jesse.borries@gmail.com for your e-commerce, marketing, and prototyping needs.</h4>
                 </div>
-            </div>
 
-            <div class="col s12 m4 l4 fade">
-                <div class="center promo promo-example">
-                    <i class="mdi-action-dashboard "></i>
-                    <h5 class="promo-caption">Minimalist Design</h5>
-                    <p class="light center">Gone are the days of cluttered shotgun advertising that lists everything all at once, hoping for a hit. Clean sites that utilize intuitive cues, sliders, and bold keywords are the hallmarks of a modern website.</p>
+                <div class="col s12 m4 l4 fade">
+                    <div class="center promo promo-example">
+                        <i class="mdi-hardware-phone-iphone"></i>
+                        <h5 class="promo-caption"><strong>Front-End Technologies</strong></h5>
+                        <p class="light center">
+                            <ul>
+                                <li>HTML5</li>
+                                <li>CSS3</li>
+                                <li> AngularJS</li>
+                                <li>Ruby on Rails</li>
+                                <li>Python</li>
+                                <li>Bootstrap</li>
+                            </ul>
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col s12 m4 l4 fade">
-                <div class="center promo promo-example">
-                    <i class="mdi-hardware-desktop-windows"></i>
-                    <h5 class="promo-caption">Responsive</h5>
-                    <p class="light center">Mobile tall. Mobile landscape. Tablets. Desktops. Technology necessitates a site to be responsive in how it looks on modern devices. If your site loses functionality because it isn't responsive, you're losing $.</p>
+                <div class="col s12 m4 l4 fade">
+                    <div class="center promo promo-example">
+                        <i class="mdi-action-dashboard "></i>
+                        <h5 class="promo-caption"><strong>Back-End Technologies</strong></h5>
+                        <p class="light center">
+                            <ul>
+                                <li>Django</li>
+                                <li>NodeJS w/Express</li>
+                                <li>SQL(postgres/lite)</li>
+                                <li>MongoDB w/Mongoose</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col s12 m4 l4 fade">
+                    <div class="center promo promo-example">
+                        <i class="mdi-hardware-desktop-windows"></i>
+                        <h5 class="promo-caption"><strong>Graphic Technologies</strong></h5>
+                        <p class="light center">
+                            <ul>
+                                <li>Adobe Photoshop</li>
+                                <li>Gimp</li>
+                                <li>Adobe Spark</li>
+                                <li>Canva</li>
+                                <li>Vectr</li>
+                                <li>Facebook Ads</li>
+                                <li>Animoto</li>
+                            </ul>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!--Work-->
-<div class="section scrollspy" id="work">
-    <div class="container ">
-        <h2 class="header text_b fade">Web Development </h2>
-        <div class="row">
-            <div class="col s12 m4 l4 fade">
-                <div class="card" id="div1">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/shirts1.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Skip-to-my-lou Designs <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="https://s3-us-west-2.amazonaws.com/skip.com/index.html" target="_blank">Project Link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4 fade">Skip to my Lou Designs <i class="mdi-navigation-close right"></i></span>
-                        <p>An e-commerce site that focuses on personalized shirts, gifts, and more. Designed layout and media. Developed all marketing content. Utilizes HTML5, CSS3, PHP contact form, bootstrap. Site is under construction.</p>
+    <!--Work-->
+    <div class="section scrollspy" id="work">
+        <div class="container ">
+            <h2 class="header text_b fade">Web Development </h2>
+            <div class="row">
+                <div class="col s12 m4 l4 fade">
+                    <div class="card" id="div1">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="img/shirts1.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Skip-to-my-lou Designs <i class="mdi-navigation-more-vert right"></i></span>
+                            <p><a href="https://s3-us-west-2.amazonaws.com/skip.com/index.html" target="_blank">Project Link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4 fade">Skip to my Lou Designs <i class="mdi-navigation-close right"></i></span>
+                            <p>An e-commerce site that focuses on personalized shirts, gifts, and more. Designed layout and media. Developed all marketing content. Utilizes HTML5, CSS3, PHP contact form, bootstrap. Site is under construction.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col s12 m4 l4 fade">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/2.jpg">
-                    </div>
-                    <div class="card-content fade">
-                        <span class="card-title activator grey-text text-darken-4 ">FW Murder Mystery <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="http://www.fwmurdermystery.com" target="_blank">Project link</a></p>
-                    </div>
-                    <div class="card-reveal ">
-                        <span class="card-title grey-text text-darken-4">Fort Worth Murder Mystery <i class="mdi-navigation-close right"></i></span>
-                        <p>A single page mobile first charity event website built in partnership with the Amon G. Carter Museum. Custom shopping cart and thematic elements tie the event and site together. Created all marketing and social media content. Utilizes HTML5, CSS3, Bootstrap.</p>
+                <div class="col s12 m4 l4 fade">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="img/2.jpg">
+                        </div>
+                        <div class="card-content fade">
+                            <span class="card-title activator grey-text text-darken-4 ">FW Murder Mystery <i class="mdi-navigation-more-vert right"></i></span>
+                            <p><a href="http://www.fwmurdermystery.com" target="_blank">Project link</a></p>
+                        </div>
+                        <div class="card-reveal ">
+                            <span class="card-title grey-text text-darken-4">Fort Worth Murder Mystery <i class="mdi-navigation-close right"></i></span>
+                            <p>A single page mobile first charity event website built in partnership with the Amon G. Carter Museum. Custom shopping cart and thematic elements tie the event and site together. Created all marketing and social media content.
+                                Utilizes HTML5, CSS3, Bootstrap.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col s12 m4 l4 fade">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="img/prom1.jpg">
+                <div class="col s12 m4 l4 fade">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="img/prom1.jpg">
 
-                    <!--
+                            <!--
                     <div id="myCarousel" class="carousel slide">
                         <!-- Wrapper for Slides
                         <div class="carousel-inner" style="border: 3px solid white;">
@@ -227,83 +271,83 @@
                     </div>-->
 
 
-                    </div>
-                    <div class="card-content fade">
-                        <span class="card-title activator grey-text text-darken-4">FW Tacky Prom <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="https://www.fortworthtackyprom.com" target="_blank">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4 ">FW Tacky Prom<i class="mdi-navigation-close right"></i></span>
-                        <p>Annual Charity event multi-page website with a focus on pictures for inspiration. Created all marketing and social media content. PHP based sign up form for updates is included.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4 fade">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/photography1.jpg">
-                    </div>
-                    <div class="card-content fade">
-                        <span class="card-title activator grey-text text-darken-4">AlyRenee Photography<i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="http://54.201.172.29/gallery">Project link</a></p>
-                    </div>
-                    <div class="card-reveal fade">
-                        <span class="card-title grey-text text-darken-4 ">AlyRenee Photography <i class="mdi-navigation-close right"></i></span>
-                        <p>Photography website constructed with Materialize CSS. Developed marketing content for client. Currently under construction.</p>
+                        </div>
+                        <div class="card-content fade">
+                            <span class="card-title activator grey-text text-darken-4">FW Tacky Prom <i class="mdi-navigation-more-vert right"></i></span>
+                            <p><a href="https://www.fortworthtackyprom.com" target="_blank">Project link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4 ">FW Tacky Prom<i class="mdi-navigation-close right"></i></span>
+                            <p>Annual Charity event multi-page website with a focus on pictures for inspiration. Created all marketing and social media content. PHP based sign up form for updates is included.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col s12 m4 l4 fade">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/cat-calendar.jpg">
-                    </div>
-                    <div class="card-content fade">
-                        <span class="card-title activator grey-text text-darken-4 ">Scheduler Application<i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="http://54.214.226.150/#!/">Project link</a></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4 ">Appointment Scheduler <i class="mdi-navigation-close right"></i></span>
-                        <p>A simple unstyled scheduler application with custom validations built primarily for Doctors offices. Front end and validations can be tailored to fit any business. Built using MEAN Stack (Angular1.js).</p>
+                <div class="col s12 m4 l4 fade">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="img/photography1.jpg">
+                        </div>
+                        <div class="card-content fade">
+                            <span class="card-title activator grey-text text-darken-4">AlyRenee Photography<i class="mdi-navigation-more-vert right"></i></span>
+                            <p><a href="http://54.201.172.29/gallery">Project link</a></p>
+                        </div>
+                        <div class="card-reveal fade">
+                            <span class="card-title grey-text text-darken-4 ">AlyRenee Photography <i class="mdi-navigation-close right"></i></span>
+                            <p>Photography website constructed with Materialize CSS. Developed marketing content for client. Currently under construction.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col s12 m4 l4 fade">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="img/present.jpg">
+                <div class="col s12 m4 l4 fade">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="img/cat-calendar.jpg">
+                        </div>
+                        <div class="card-content fade">
+                            <span class="card-title activator grey-text text-darken-4 ">Scheduler Application<i class="mdi-navigation-more-vert right"></i></span>
+                            <p><a href="http://54.214.226.150/#!/">Project link</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4 ">Appointment Scheduler <i class="mdi-navigation-close right"></i></span>
+                            <p>A simple unstyled scheduler application with custom validations built primarily for Doctors offices. Front end and validations can be tailored to fit any business. Built using MEAN Stack (Angular1.js).</p>
+                        </div>
                     </div>
-                    <div class="card-content fade">
-                        <span class="card-title activator grey-text text-darken-4 fade">Gift List Application <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a href="http://54.202.80.144/#/">Project link</a></p>
-                    </div>
-                    <div class="card-reveal fade">
-                        <span class="card-title grey-text text-darken-4 fade">Gift List <i class="mdi-navigation-close right"></i></span>
-                        <p>A multi-purpose item, gift, product tracker for integrated user groups. Built using MEAN Stack (Angular1.js).</p>
+                </div>
+                <div class="col s12 m4 l4 fade">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="img/present.jpg">
+                        </div>
+                        <div class="card-content fade">
+                            <span class="card-title activator grey-text text-darken-4 fade">Gift List Application <i class="mdi-navigation-more-vert right"></i></span>
+                            <p><a href="http://54.202.80.144/#/">Project link</a></p>
+                        </div>
+                        <div class="card-reveal fade">
+                            <span class="card-title grey-text text-darken-4 fade">Gift List <i class="mdi-navigation-close right"></i></span>
+                            <p>A multi-purpose item, gift, product tracker for integrated user groups. Built using MEAN Stack (Angular1.js).</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!--Parallax-->
-<div class="parallax-container fade">
-    <div class="hide-on-med-and-up	">
-        <div class="parallax"><img src="img/kidswhocode6.jpg" style="max-height: 100%;"></div>
+    <!--Parallax-->
+    <div class="parallax-container fade">
+        <div class="hide-on-med-and-up	">
+            <div class="parallax"><img src="img/kidswhocode6.jpg" style="max-height: 100%;"></div>
+        </div>
+        <div class="hide-on-small-only">
+            <div class="parallax"><img src="img/kidswhocode5.jpg" style="max-width: 100%;"></div>
+        </div>
     </div>
-    <div class="hide-on-small-only">
-        <div class="parallax"><img src="img/kidswhocode5.jpg" style="max-width: 100%;"></div>
-    </div>
-</div>
 
-<!--Team-->
-<div class="section scrollspy" id="team">
-    <div class="container">
-        <h2 class="header text_b fade"> Social Media Marketing </h2>
-        <div class="row">
+    <!--Team-->
+    <div class="section scrollspy" id="team">
+        <div class="container">
+            <h2 class="header text_b fade"> Social Media Marketing </h2>
+            <div class="row">
 
-            <div class="col s12 m3 fade">
+                <div class="col s12 m3 fade">
 
                     <div class="waves-effect waves-block waves-light fade">
                         <a href="bbbs-events.html"><img class="activator" src="img/bbbs9.jpg" style="max-width: 100%; max-height:100%;">
@@ -313,10 +357,10 @@
                             <small><em><a class="red-text text-darken-1 fade" href="bbbs-events.html">Big Brothers Big Sisters Social Event Invites</a></em></small>
                         </span>
                     </div>
-            </div>
+                </div>
 
-            <div class="col s12 m3 fade">
-                        <div class="waves-effect waves-block waves-light fade">
+                <div class="col s12 m3 fade">
+                    <div class="waves-effect waves-block waves-light fade">
                         <a href="bbbs-recruit.html"><img class="activator" src="img/bbbs7.jpg" style="max-width:100%; max-height:100%;"></a>
                     </div>
                     <div class="card-content">
@@ -325,107 +369,159 @@
                         </span>
                     </div>
 
-            </div>
-            <div class="col s12 m3 fade">
+                </div>
+                <div class="col s12 m3 fade">
 
                     <div class="waves-effect waves-block waves-light fade">
-                       <!-- <img class="activator" src="img/PromInvite.jpg" style="max-width:100%; max-height:100%;">
+                        <!-- <img class="activator" src="img/PromInvite.jpg" style="max-width:100%; max-height:100%;">
 
                         <!--Start FW Murder Mystery Slider -->
 
-                          <div id="Carousel" class="carousel slide">
-                              <!-- Wrapper for Slides -->
-                              <div class="carousel-inner">
-                                  <div class="item active">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/1.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/3.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/4.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/5.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/6.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/7.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/8.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/9.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/10.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/11.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/12.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/13.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/15.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/16.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/17.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/18.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/19.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/20.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/21.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/22.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/23.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/24.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/25.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/26.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/27.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><img class="img-responsive" src="img/28.jpg" alt="" style="border-radius:2px;"></div>
-                                  </div>
-                                  <div class="item">
-                                      <div class="fill"><a href="murder-mystery.html"><img class="img-responsive" src="img/29.jpg" alt="" style="border-radius:2px;"></a></div>
-                                  </div>
+                        <div id="Carousel" class="carousel slide">
+                            <!-- Wrapper for Slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/1.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/3.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/4.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/5.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/6.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/7.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/8.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/9.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/10.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/11.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/12.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/13.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/15.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/16.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/17.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/18.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/19.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/20.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/21.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/22.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/23.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/24.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/25.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/26.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/27.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill"><img class="img-responsive" src="img/28.jpg" alt="" style="border-radius:2px;"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill">
+                                        <a href="murder-mystery.html"><img class="img-responsive" src="img/29.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
+                                </div>
 
-                                  <a class="left carousel-control" href="#Carousel" data-slide="prev">
-                                      <span class="icon-prev"></span>
-                                  </a>
-                                  <a class="right carousel-control" href="#Carousel" data-slide="next">
-                                      <span class="icon-next"></span>
-                                  </a>
-                              </div>
-                          </div>
+                                <a class="left carousel-control" href="#Carousel" data-slide="prev">
+                                    <span class="icon-prev"></span>
+                                </a>
+                                <a class="right carousel-control" href="#Carousel" data-slide="next">
+                                    <span class="icon-next"></span>
+                                </a>
+                            </div>
+                        </div>
 
                         <!--End FW Murder Mystery Slider -->
 
@@ -435,41 +531,59 @@
                         <span class="card-title activator grey-text text-darken-4 fade"><br>
                             <small><em><a class="red-text text-darken-1" href="https://www.fwmurdermystery.com">Fort Worth Murder Mystery at the Museum </a></em></small></span>
                     </div>
-            </div>
-            <div class="col s12 m3 fade">
+                </div>
+                <div class="col s12 m3 fade">
 
                     <div class="waves-effect waves-block waves-light fade">
                         <!--<img class="activator" src="img/2.jpg" style="max-width:100%; max-height:100%;">-->
 
-                       <div id="myCarousel" class="carousel slide">
+                        <div id="myCarousel" class="carousel slide">
                             <!-- Wrapper for Slides -->
                             <div class="carousel-inner" style="border: 3px solid white;">
                                 <div class="item active">
-                                    <div class="fill"><a href="prom.html"><img class="img-responsive" src="img/prom1.jpg" alt="" style="border-radius:2px;"></a></div>
+                                    <div class="fill">
+                                        <a href="prom.html"><img class="img-responsive" src="img/prom1.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
                                 </div>
                                 <div class="item">
-                                    <div class="fill"><a href="prom.html"><img class="img-responsive" src="img/prom3.jpg" alt="" style="border-radius:2px;"></a></div>
+                                    <div class="fill">
+                                        <a href="prom.html"><img class="img-responsive" src="img/prom3.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
                                 </div>
                                 <div class="item">
-                                    <div class="fill"><a href="prom.html"><img class="img-responsive" src="img/prom4.jpg" alt="" style="border-radius:2px;"></a></div>
+                                    <div class="fill">
+                                        <a href="prom.html"><img class="img-responsive" src="img/prom4.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
                                 </div>
                                 <div class="item">
-                                    <div class="fill"><a href="prom.html"><img class="img-responsive" src="img/prom6.jpg" alt="" style="border-radius:2px;"></a></div>
+                                    <div class="fill">
+                                        <a href="prom.html"><img class="img-responsive" src="img/prom6.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
                                 </div>
                                 <div class="item">
-                                    <div class="fill"><a href="prom.html"><img class="img-responsive" src="img/prom7.jpg" alt="" style="border-radius:2px;"></a></div>
+                                    <div class="fill">
+                                        <a href="prom.html"><img class="img-responsive" src="img/prom7.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
                                 </div>
                                 <div class="item">
-                                    <div class="fill"><a href="prom.html"><img class="img-responsive" src="img/prom8.jpg" alt="" style="border-radius:2px;"></a></div>
+                                    <div class="fill">
+                                        <a href="prom.html"><img class="img-responsive" src="img/prom8.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
                                 </div>
                                 <div class="item">
-                                    <div class="fill"><a href="prom.html"><img class="img-responsive" src="img/prom9.jpg" alt="" style="border-radius:2px;"></a></div>
+                                    <div class="fill">
+                                        <a href="prom.html"><img class="img-responsive" src="img/prom9.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
                                 </div>
                                 <div class="item">
-                                    <div class="fill"><a href="prom.html"><img class="img-responsive" src="img/prom10.jpg" alt="" style="border-radius:2px;"></a></div>
+                                    <div class="fill">
+                                        <a href="prom.html"><img class="img-responsive" src="img/prom10.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
                                 </div>
                                 <div class="item">
-                                    <div class="fill"><a href="prom.html"><img class="img-responsive" src="img/prom11.jpg" alt="" style="border-radius:2px;"></a></div>
+                                    <div class="fill">
+                                        <a href="prom.html"><img class="img-responsive" src="img/prom11.jpg" alt="" style="border-radius:2px;"></a>
+                                    </div>
                                 </div>
                                 <!--slider control buttons-->
                                 <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -488,95 +602,109 @@
                             <small><em><a class="red-text text-darken-1" href="prom.html">Fort Worth Tacky Prom </a></em></small></span>
                     </div>
 
-            </div>
-        </div>
-
-    <div class="row">
-        <div class="col s12 m3 fade">
-                    <div class="waves-effect waves-block waves-light fade">
-                    <a href="bbbs-smile-campaign.html"><img class="activator" src="img/Smiles1.jpg" style="max-width:100%; max-height:100%;"></a>
                 </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4 fade"><br/>
+            </div>
+
+            <div class="row">
+                <div class="col s12 m3 fade">
+                    <div class="waves-effect waves-block waves-light fade">
+                        <a href="bbbs-smile-campaign.html"><img class="activator" src="img/Smiles1.jpg" style="max-width:100%; max-height:100%;"></a>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4 fade"><br/>
                         <small><em><a class="red-text text-darken-1" href="bbbs-smile-campaign.html">Big Brothers Big Sisters Amazon Smile Campaign</a></em></small>
                     </span>
+                    </div>
                 </div>
-        </div>
+
+
+                <div class="col s12 m3 fade">
+                    <div class="waves-effect waves-block waves-light fade">
+                        <a href="america-gardens.html"><img class="activator" src="img/AG/ag6.jpg" style="max-width:100%; max-height:100%;"></a>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4 fade"><br/>
+                        <small><em><a class="red-text text-darken-1" href="america-gardens.html">The Syn Group/America Gardens Promotional Material</a></em></small>
+                    </span>
+                    </div>
+                </div>
+            </div>
 
 
         </div>
     </div>
-</div>
 
 
-<!--Footer-->
-<footer id="contact" class="page-footer default_color scrollspy fade">
-    <div class="container fade">
-        <div class="row">
-            <div class="col l6 s12">
+    <!--Footer-->
+    <footer id="contact" class="page-footer default_color scrollspy fade">
+        <div class="container fade">
+            <div class="row">
+                <div class="col l6 s12">
 
-                <!-- Contact Form-->
-                <form class="col s12" action="https://formspree.io/jesse.borries@gmail.com" method="post">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <i class="mdi-action-account-circle prefix white-text"></i>
-                            <input id="icon_prefix" name="name" type="text" class="validate white-text">
-                            <label for="icon_prefix" class="white-text">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="mdi-communication-email prefix white-text"></i>
-                            <input id="icon_email" name="_replyto" type="email" class="validate white-text">
-                            <label for="icon_email" class="white-text">Email-id</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <i class="mdi-editor-mode-edit prefix white-text"></i>
-                            <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
-                            <label for="icon_prefix2" class="white-text">Message</label>
-                        </div>
-                        <div class="col offset-s7 s5">
-                            <button class="btn waves-effect waves-light red darken-1" type="submit" value="Send">Submit
+                    <!-- Contact Form-->
+                    <form class="col s12" action="https://formspree.io/jesse.borries@gmail.com" method="post">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="mdi-action-account-circle prefix white-text"></i>
+                                <input id="icon_prefix" name="name" type="text" class="validate white-text">
+                                <label for="icon_prefix" class="white-text">First Name</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="mdi-communication-email prefix white-text"></i>
+                                <input id="icon_email" name="_replyto" type="email" class="validate white-text">
+                                <label for="icon_email" class="white-text">Email-id</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <i class="mdi-editor-mode-edit prefix white-text"></i>
+                                <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
+                                <label for="icon_prefix2" class="white-text">Message</label>
+                            </div>
+                            <div class="col offset-s7 s5">
+                                <button class="btn waves-effect waves-light red darken-1" type="submit" value="Send">Submit
                                 <i class="mdi-content-send right white-text"></i>
                             </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
 
-                <!--End Contact Form-->
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text"> Y'all come back now, ya hear!</h5>
-                <ul>
-                    <li><a class="white-text" href=""></a></li>
-                </ul>
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Social</h5>
-                <ul>
-                                      <li>
-                        <a class="white-text" href="https://www.facebook.com/public/jesse-borries">
-                            <i class="small fa fa-facebook-square white-text"></i> Facebook
-                        </a>
-                    </li>
-                    <li>
-                        <a class="white-text" href="https://github.com/jborries">
-                            <i class="small fa fa-github-square white-text"></i> Github
-                        </a>
-                    </li>
-                    <li>
-                        <a class="white-text" href="https://www.linkedin.com/in/jesse-borries">
-                            <i class="small fa fa-linkedin-square white-text"></i> Linkedin
-                        </a>
-                    </li>
-                </ul>
+                    <!--End Contact Form-->
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text"> Y'all come back now, ya hear!</h5>
+                    <ul>
+                        <li>
+                            <a class="white-text" href=""></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Social</h5>
+                    <ul>
+                        <li>
+                            <a class="white-text" href="https://www.facebook.com/public/jesse-borries">
+                                <i class="small fa fa-facebook-square white-text"></i> Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="https://github.com/jborries">
+                                <i class="small fa fa-github-square white-text"></i> Github
+                            </a>
+                        </li>
+                        <li>
+                            <a class="white-text" href="https://www.linkedin.com/in/jesse-borries">
+                                <i class="small fa fa-linkedin-square white-text"></i> Linkedin
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="footer-copyright default_color">
-        <div class="container">
-            Made with love by <a class="white-text" href="">Jesse Borries</a> using <a class="white-text" href="http://materializecss.com/">materializecss</a>
+        <div class="footer-copyright default_color">
+            <div class="container">
+                Made with love by <a class="white-text" href="">Jesse Borries</a> using <a class="white-text" href="http://materializecss.com/">materializecss</a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
 
     <!--  Scripts-->
@@ -592,5 +720,6 @@
     </script>
 
 
-    </body>
+</body>
+
 </html>
