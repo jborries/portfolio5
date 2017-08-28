@@ -1,0 +1,104 @@
+switching from sqlite3 to postgresql and postgresql_psycopg2
+
+How to Setup up PostgreSQL with a Django Backend
+Jun 2, 2017
+
+Introduction
+Welcome! I know it is out of the ordinary for me, but lately I have experimenting with using Django on the backend for some of my projects. For a database, I have been sticking with PostgreSQL. The purpose of this tutorial is to teach you how to get started using Django with PostgreSQL for your database work.
+
+If you have used Django before you know that it’s default relational database is SQLite. In order to use another relational database you must complete a couple of steps. Today we will demonstrate this with PostgreSQL.
+
+Requirements
+The things you need installed for this tutorial are:
+
+PostgreSQL (9.5)
+Python (2.7.1)
+Django (1.11)
+I am expecting you to have a basic Django backend set up. If you do not, check out this link.
+
+Now that you made sure your environment is set up let’s add PostgreSQL.
+
+Edit settings.py
+In your settings.py file (located in the directory myproject/myproject/settings.py), you must go down to where you see a section for your DATABASE settings. Instead of django.db.backends.postgresql you should see django.db.backends.sqlite3.
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}1
+The code I have placed above is what you should change to the entire DATABASE section to.
+
+Now you are probably wondering, what are DB_NAME, DB_USER, and DB_PASS?
+
+At the top of your settings.py file, add this:
+
+DB_NAME = os.environ['DB_NAME']
+DB_USER = os.environ['DB_USER']
+DB_PASS = os.environ['DB_PASS']
+We do not want to commit our private information about our database to our source control, so we will be using environment variables to access them.
+
+Create a Secrets File
+As mentioned in the previous section, we want to store our private information about the database when saving things in source control.
+
+Create a file in your project directory called secrets.sh:
+
+$ touch secrets.sh
+Then you want to add the following to it:
+
+export DB_NAME='databaseName'
+export DB_USER='dbUserName'
+export DB_PASS='dbPassWord'
+Now in order for your environment to actually contain these variables, you must run the script we just wrote:
+
+$ . secrets.sh
+Just like that your environment variables are set.
+
+Install psycopg2
+The last step here, is simply installing the package psycopg2:
+
+$ pip install psycopg2
+This package is simply a PostgreSQL adapter for Python.
+
+Left Overs
+For sake of brevity with this tutorial, this is all you need to do differently for setting up PostgreSQL. If you are first starting out, I want to suggest that you do the following things:
+
+Actually create a database to use and set DB_NAME equal to the name
+Create a Table with rows
+Create a Model to represent your data and place it in your models.py file.
+Proceed with the regular things you need to do when setting up a database with Django - migrate and makemigrations.
+Conclusion
+Many developers prefer to use PostgreSQL for their database, so do not be alarmed when you see that it does not come packaged with Django.
+
+Great job today! I know it was short, but I hope you got some value out of this!
+
+Reach out and follow me on twitter! Check out my GitHub for my open source projects!
+
+Step 1: Install PostgreSQL
+
+First, you’ll follow a simple best practice: ensuring the list of available packages is up to date before installing anything new.
+
+apt-get -y update
+
+Then it’s a matter of just running one command for installation via apt-get:
+
+apt-get -y install postgresql postgresql-contrib
+
+Postgres should now be installed and ready to use.
+Step 2: Switch to the Default PostgreSQL User
+
+As part of the installation Postgres adds the system user postgres and is setup to use “ident” authentication. Roles internal to Postgres (which are similar to users) match with a system user account.
+
+Let’s switch into that system user:
+
+su – postgres
+
+And then connect to the PostgreSQL terminal (in the postgres role):
+
+psql
+
+That’s it! You’re connected and ready to run commands in PostgreSQL as the postgres role. In future (Sept 2014) articles we’ll delve into creating new roles, changing a role’s password, creating/deleting databases, backups, etc.
